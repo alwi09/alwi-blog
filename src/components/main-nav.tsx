@@ -11,7 +11,9 @@ export function MainNav() {
   return (
     <nav className="flex items-center space-x-4 lg:space-x-6">
       <Link href="/" className="mr-6 flex items-center space-x-2">
-        <Icons.logo className="h-7 w-7" />
+        <div className="p-[5.5px] sm:p-[6px] whitespace-nowrap text-sm font-medium rounded-md ring-offset-background transition-colors dark:bg-foreground/45">
+          <Icons.logo className="h-7 w-7" />
+        </div>
         <span className="font-bold text-xl">{siteConfig.name}</span>
       </Link>
       <Link
@@ -27,7 +29,7 @@ export function MainNav() {
         href="/about"
         className={cn(
           "text-base font-medium transition-colors hover:text-primary hidden sm:inline-flex",
-          pathname === "/blog" ? "text-foreground" : "text-foreground/60"
+          pathname === "/about" ? "text-foreground" : "text-foreground/60"
         )}
       >
         About
