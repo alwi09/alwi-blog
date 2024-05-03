@@ -17,7 +17,7 @@ export function MainNav() {
       <Link
         href="/blog"
         className={cn(
-          "text-base font-medium transition-colors hover:text-primary",
+          "text-base font-medium transition-colors hover:text-primary hidden sm:inline-flex",
           pathname === "/blog" ? "text-foreground" : "text-foreground/60"
         )}
       >
@@ -26,7 +26,7 @@ export function MainNav() {
       <Link
         href="/about"
         className={cn(
-          "text-base font-medium transition-colors hover:text-primary",
+          "text-base font-medium transition-colors hover:text-primary hidden sm:inline-flex",
           pathname === "/blog" ? "text-foreground" : "text-foreground/60"
         )}
       >

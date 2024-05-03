@@ -4,6 +4,7 @@ import Link from "next/link";
 import { buttonVariants } from "./ui/button";
 import { Icons } from "./icons";
 import { MainNav } from "./main-nav";
+import { MobileNav } from "./mobile-nav";
 
 export function SiteHeader() {
   return (
@@ -20,7 +21,7 @@ export function SiteHeader() {
               <div
                 className={cn(
                   buttonVariants({ variant: "ghost" }),
-                  "w-10 px-0"
+                  "w-10 px-0 hidden sm:inline-flex"
                 )}
               >
                 {" "}
@@ -35,7 +36,7 @@ export function SiteHeader() {
               <div
                 className={cn(
                   buttonVariants({ variant: "ghost" }),
-                  "w-10 px-0"
+                  "w-10 px-0 hidden sm:inline-flex"
                 )}
               >
                 {" "}
@@ -50,13 +51,14 @@ export function SiteHeader() {
               <div
                 className={cn(
                   buttonVariants({ variant: "ghost" }),
-                  "w-10 px-0"
+                  "w-10 px-0 hidden sm:inline-flex"
                 )}
               >
                 {" "}
                 <Icons.instagram className="h-7 w-7" />
               </div>
             </Link>
+            <MobileNav />
           </nav>
         </div>
       </div>
