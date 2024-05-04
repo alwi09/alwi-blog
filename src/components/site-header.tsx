@@ -62,9 +62,7 @@ export function SiteHeader() {
                 <Icons.instagram className="h-7 w-7" />
               </div>
             </Link>
-            <div className="px-2">
-              <ModeToggle />
-            </div>
+            <ModeToggle />
             <MobileNav />
           </nav>
         </div>
