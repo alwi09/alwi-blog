@@ -7,7 +7,7 @@ const computedFields = <T extends { slug: string }>(data: T) => ({
 
 const posts = defineCollection({
   name: "Post",
-  pattern: "/blog/**/*.{md,mdx}",
+  pattern: "blog/**/*.mdx",
   schema: s
     .object({
       slug: s.path(),
@@ -21,7 +21,7 @@ const posts = defineCollection({
 });
 
 export default defineConfig({
-  root: "src/content",
+  root: "content",
   output: {
     data: ".velite",
     assets: "public/static",
@@ -31,7 +31,7 @@ export default defineConfig({
   },
   collections: { posts },
   mdx: {
-    remarkPlugins: [],
     rehypePlugins: [],
+    remarkPlugins: [],
   },
 });

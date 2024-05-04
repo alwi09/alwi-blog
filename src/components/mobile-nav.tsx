@@ -26,10 +26,12 @@ export function MobileNav() {
           href="/"
           className="flex items-center"
         >
-          <Icons.logo className="mr-2 h-4 w-4" />
+          <div className="p-[4px] whitespace-nowrap text-sm font-medium rounded-md ring-offset-background transition-colors dark:bg-foreground/45 mr-2">
+            <Icons.logo className="h-4 w-4" />
+          </div>
           <span className="font-bold">{siteConfig.name}</span>
         </MobileLink>
-        <div className="flex flex-col justify-between h-2/6">
+        <div className="flex flex-col justify-between h-1/6">
           <div className="flex flex-col gap-3 mt-10">
             <MobileLink
               onOpenChange={setOpen}
@@ -45,6 +47,7 @@ export function MobileNav() {
             >
               About
             </MobileLink>
+            <hr className="border-border my-4" />
           </div>
           <div className="flex items-center justify-end gap-3">
             <MobileLink
