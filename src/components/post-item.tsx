@@ -8,18 +8,9 @@ interface PostItemProps {
   title: string;
   description?: string;
   date: string;
-  published: boolean;
-  body: string;
 }
 
-export function PostItem({
-  slug,
-  title,
-  description,
-  date,
-  published,
-  body,
-}: PostItemProps) {
+export function PostItem({ slug, title, description, date }: PostItemProps) {
   return (
     <article className="flex flex-col gap-2 border-border border-b py-3">
       <div>

@@ -21,7 +21,7 @@ export default async function BlogPage() {
       {displayPosts.length > 0 ? (
         <ul className="flex flex-col">
           {displayPosts.map((post) => {
-            const { slug, title, description, date, published } = post;
+            const { slug, title, description, date } = post;
             return (
               <li key={slug}>
                 <PostItem
@@ -29,8 +29,6 @@ export default async function BlogPage() {
                   title={title}
                   description={description}
                   date={date}
-                  published={published}
-                  body={""}
                 />
               </li>
             );
