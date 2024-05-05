@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "AlwiBlog",
-  url: "https://alwiblog.vercel.app",
+  url: "https://alwi-blog.vercel.app",
   description:
-    "Alwi's Blog Creating with Next.js 14 using velite, tailwindcss and shadcn ui",
+    "Welcome to my blog template. Built using tailwind, shadcn, velite and Nextjs 14. 📄",
   author: "Mohammad Alwi Irfani",
   links: {
     facebook: "https://www.facebook.com/art.Xfast",
