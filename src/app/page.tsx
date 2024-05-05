@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-export const metadat: Metadata = {
+export const metadata: Metadata = {
   title: "Home",
 };
 
