@@ -5,8 +5,10 @@ import { siteConfig } from "@/config/site";
 export const runtime = "edge";
 
 const interBold = fetch(
-  new URL("../../../../assets/font/Inter-Bold.ttf", import.meta.url)
+  new URL("../../../assets/font/Inter-Bold.ttf", import.meta.url)
 ).then((res) => res.arrayBuffer());
+
+console.log(interBold);
 
 export async function GET(req: NextRequest) {
   try {
@@ -28,6 +30,7 @@ export async function GET(req: NextRequest) {
           <div tw="flex items-center">
             <svg
               role="img"
+              fill="none"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
