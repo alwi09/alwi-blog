@@ -29,7 +29,7 @@ export default async function AboutPage() {
             />
             <AvatarFallback>AW</AvatarFallback>
           </Avatar>
-          <h2 className="text-4xl font-serif font-bold text-center break-words">
+          <h2 className="text-2xl md:text-4xl font-serif font-bold text-center break-words">
             {siteConfig.author}
           </h2>
           <p className="text-muted-foreground text-center break-words">
