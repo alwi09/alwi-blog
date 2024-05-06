@@ -3,7 +3,7 @@ export const siteConfig = {
   url: "https://alwi-blog.vercel.app",
   description:
     "Welcome to my blog template. Built using tailwind, shadcn, velite and Nextjs 14. 📄",
-  author: "Mohammad Alwi Irfani",
+  author: "Alwi Irfani",
   links: {
     facebook: "https://www.facebook.com/art.Xfast",
     instagram: "https://www.instagram.com/alwi_irfani470",
