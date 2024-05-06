@@ -31,15 +31,6 @@ export const viewport: Viewport = {
     { media: "(prefers-color-scheme: dark)", color: "black" },
     { media: "(prefers-color-scheme: no-preference)", color: "white" },
   ],
-  width: "device-width",
-  height: "device-height",
-  initialScale: 1,
-  minimumScale: 1,
-  maximumScale: 1,
-  userScalable: false,
-  colorScheme: "light",
-  interactiveWidget: "overlays-content",
-  viewportFit: "cover",
 };
 
 export default function RootLayout({
