@@ -22,7 +22,7 @@ export const metadata: Metadata = {
       rel: "icon",
     },
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? `${siteConfig.url}`),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? siteConfig.url),
 };
 
 export const viewport: Viewport = {

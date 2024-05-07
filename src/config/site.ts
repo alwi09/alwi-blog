@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "AlwiBlog",
-  url: process.env.NEXT_APP_URL,
+  url: "https://alwi-blog.vercel.app",
   description:
     "Welcome to my blog. Thanks for coming by. Build using tailwindCSS, velite, shadcn UI and Nextjs 14. 📄",
   author: "Alwi Irfani",
