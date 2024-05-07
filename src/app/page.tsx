@@ -33,7 +33,7 @@ export default function Home() {
               View my blog
             </Link>
             <Link
-              href={siteConfig.links.github}
+              href={`${siteConfig.links.github}`}
               target="_blank"
               rel="noreferrer"
               className={cn(

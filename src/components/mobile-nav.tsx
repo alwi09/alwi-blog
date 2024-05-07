@@ -51,7 +51,7 @@ export function MobileNav() {
           </div>
           <div className="flex items-center justify-end gap-3">
             <MobileLink
-              href={siteConfig.links.github}
+              href={`${siteConfig.links.github}`}
               className="p-[6px] whitespace-nowrap text-sm font-medium rounded-md ring-offset-background transition-colors dark:bg-foreground/45 bg-foreground/5"
               target="_blank"
               onOpenChange={setOpen}
@@ -59,7 +59,7 @@ export function MobileNav() {
               <Icons.github className="h-7 w-7" />
             </MobileLink>
             <MobileLink
-              href={siteConfig.links.facebook}
+              href={`${siteConfig.links.facebook}`}
               className="p-[6px] whitespace-nowrap text-sm font-medium rounded-md ring-offset-background transition-colors dark:bg-foreground/45 bg-foreground/5"
               target="_blank"
               onOpenChange={setOpen}
@@ -67,7 +67,7 @@ export function MobileNav() {
               <Icons.facebook className="h-7 w-7" />
             </MobileLink>
             <MobileLink
-              href={siteConfig.links.instagram}
+              href={`${siteConfig.links.instagram}`}
               className="p-[6px] whitespace-nowrap text-sm font-medium rounded-md ring-offset-background transition-colors dark:bg-foreground/45 bg-foreground/5"
               target="_blank"
               onOpenChange={setOpen}
