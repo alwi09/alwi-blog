@@ -42,7 +42,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
       {displayPosts.length > 0 ? (
         <ul className="flex flex-col">
           {displayPosts.map((post) => {
-            const { slug, title, description, date } = post;
+            const { slug, title, description, date, tags } = post;
             return (
               <li key={slug}>
                 <PostItem
@@ -50,6 +50,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                   title={title}
                   description={description}
                   date={date}
+                  tags={tags}
                 />
               </li>
             );
