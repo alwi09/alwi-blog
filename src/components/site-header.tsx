@@ -23,11 +23,11 @@ export function SiteHeader() {
                 className={cn(
                   buttonVariants({ variant: "ghost" }),
                   "w-10 px-0 hidden sm:inline-flex",
-                  "dark:bg-foreground/45"
+                  "dark:hover:bg-foreground/15"
                 )}
               >
                 {" "}
-                <Icons.github className="h-7 w-7" />
+                <Icons.github className="h-7 w-7 fill-current dark:fill-foreground" />
               </div>
             </Link>
             <Link
@@ -39,11 +39,11 @@ export function SiteHeader() {
                 className={cn(
                   buttonVariants({ variant: "ghost" }),
                   "w-10 px-0 hidden sm:inline-flex",
-                  "dark:bg-foreground/45"
+                  "dark:hover:bg-foreground/15"
                 )}
               >
                 {" "}
-                <Icons.facebook className="h-7 w-7" />
+                <Icons.facebook className="h-7 w-7 fill-current dark:fill-foreground" />
               </div>
             </Link>
             <Link
@@ -55,11 +55,11 @@ export function SiteHeader() {
                 className={cn(
                   buttonVariants({ variant: "ghost" }),
                   "w-10 px-0 hidden sm:inline-flex",
-                  "dark:bg-foreground/45"
+                  "dark:hover:bg-foreground/15"
                 )}
               >
                 {" "}
-                <Icons.instagram className="h-7 w-7" />
+                <Icons.instagram className="h-7 w-7 fill-current dark:fill-foreground" />
               </div>
             </Link>
             <ModeToggle />

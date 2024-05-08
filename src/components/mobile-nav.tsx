@@ -24,55 +24,69 @@ export function MobileNav() {
         <MobileLink
           onOpenChange={setOpen}
           href="/"
-          className="flex items-center"
+          className="flex items-center gap-2"
         >
-          <div className="p-[4px] whitespace-nowrap text-sm font-medium rounded-md ring-offset-background transition-colors dark:bg-foreground/45 mr-2">
-            <Icons.logo className="h-4 w-4" />
-          </div>
+          <Icons.logo className="h-4 w-4 fill-current dark:text-foreground" />
           <span className="font-bold">{siteConfig.name}</span>
         </MobileLink>
         <div className="flex flex-col justify-between h-1/6">
           <div className="flex flex-col gap-3 mt-10">
-            <MobileLink
-              onOpenChange={setOpen}
-              href="/blog"
-              className="text-base font-medium"
-            >
-              Blog
-            </MobileLink>
-            <MobileLink
-              onOpenChange={setOpen}
-              href="/about"
-              className="text-base font-medium"
-            >
-              About
-            </MobileLink>
+            <div className="flex flex-row gap-2 items-center">
+              <Icons.note className="h-5 w-5 fill-current dark:text-foreground" />
+              <MobileLink
+                onOpenChange={setOpen}
+                href="/blog"
+                className="text-base font-medium"
+              >
+                Blog
+              </MobileLink>
+            </div>
+            <div className="flex flex-row gap-2 items-center">
+              <Icons.personCard className="h-5 w-5 fill-current dark:text-foreground" />
+              <MobileLink
+                onOpenChange={setOpen}
+                href="/about"
+                className="text-base font-medium"
+              >
+                About
+              </MobileLink>
+            </div>
+            <div className="flex flex-row gap-2 items-center">
+              <Icons.contact className="h-5 w-5 fill-current dark:text-foreground" />
+              <MobileLink
+                onOpenChange={setOpen}
+                href="/contact"
+                className="text-base font-medium"
+              >
+                Contact
+              </MobileLink>
+            </div>
             <hr className="border-border my-4" />
           </div>
           <div className="flex items-center justify-end gap-3">
             <MobileLink
               href={`${siteConfig.links.github}`}
-              className="p-[6px] whitespace-nowrap text-sm font-medium rounded-md ring-offset-background transition-colors dark:bg-foreground/45 bg-foreground/5"
+              className="p-[6px] whitespace-nowrap text-sm font-medium rounded-md ring-offset-background transition-colors dark:bg-foreground/15 bg-foreground/5"
               target="_blank"
               onOpenChange={setOpen}
             >
-              <Icons.github className="h-7 w-7" />
+              <Icons.github className="h-7 w-7 fill-current dark:text-foreground" />
             </MobileLink>
             <MobileLink
               href={`${siteConfig.links.facebook}`}
-              className="p-[6px] whitespace-nowrap text-sm font-medium rounded-md ring-offset-background transition-colors dark:bg-foreground/45 bg-foreground/5"
+              className="p-[6px] whitespace-nowrap text-sm font-medium rounded-md ring-offset-background transition-colors dark:bg-foreground/15 bg-foreground/5"
               target="_blank"
               onOpenChange={setOpen}
             >
-              <Icons.facebook className="h-7 w-7" />
+              <Icons.facebook className="h-7 w-7 fill-current dark:text-foreground" />
             </MobileLink>
             <MobileLink
               href={`${siteConfig.links.instagram}`}
-              className="p-[6px] whitespace-nowrap text-sm font-medium rounded-md ring-offset-background transition-colors dark:bg-foreground/45 bg-foreground/5"
+              className="p-[6px] whitespace-nowrap text-sm font-medium rounded-md ring-offset-background transition-colors dark:bg-foreground/15 bg-foreground/5"
               target="_blank"
               onOpenChange={setOpen}
             >
-              <Icons.instagram className="h-7 w-7" />
+              <Icons.instagram className="h-7 w-7 fill-current dark:text-foreground" />
             </MobileLink>
           </div>
         </div>

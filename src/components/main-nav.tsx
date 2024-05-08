@@ -11,8 +11,8 @@ export function MainNav() {
   return (
     <nav className="flex items-center space-x-4 lg:space-x-6">
       <Link href="/" className="mr-6 flex items-center space-x-2">
-        <div className="p-[5.5px] sm:p-[6px] whitespace-nowrap text-sm font-medium rounded-md ring-offset-background transition-colors dark:bg-foreground/45">
-          <Icons.logo className="h-7 w-7" />
+        <div className="p-[5.5px] sm:p-[6px] whitespace-nowrap text-sm font-medium rounded-md ring-offset-background transition-colors">
+          <Icons.logo className="h-7 w-7 fill-current dark:text-foreground" />
         </div>
         <span className="font-bold text-xl">{siteConfig.name}</span>
       </Link>
@@ -33,6 +33,15 @@ export function MainNav() {
         )}
       >
         About
+      </Link>
+      <Link
+        href="/contact"
+        className={cn(
+          "text-base font-medium transition-colors hover:text-primary hidden sm:inline-flex",
+          pathname === "/contact" ? "text-foreground" : "text-foreground/60"
+        )}
+      >
+        Contact
       </Link>
     </nav>
   );

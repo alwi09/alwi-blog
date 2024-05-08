@@ -11,7 +11,7 @@ export function WhatsappIcon() {
       aria-label="Whatsapp"
       className="abosulte fixed bottom-5 right-5 hover:scale-110 transition-transform"
     >
-      <Icons.whatsapp className="h-11 w-11" />
+      <Icons.whatsapp className="h-11 w-11 fill-current text-green-500" />
     </Link>
   );
 }
