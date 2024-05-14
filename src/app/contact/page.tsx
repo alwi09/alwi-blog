@@ -13,7 +13,7 @@ export default function Contact() {
             Contact
           </h1>
           <p className="text-xl text-muted-foreground">
-            Contacts our social media and get in touch. 🌐
+            Get in touch with our social media and contact us. 🌐
           </p>
           <hr className="my-6" />
         </div>
