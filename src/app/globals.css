@@ -77,30 +77,29 @@
 
 /* rainbow border */
 @keyframes rainbow {
-  0% {
-    border-color: red;
-  }
-  16.666% {
-    border-color: yellow;
-  }
-  33.333% {
-    border-color: yellowgreen;
-  }
-  50% {
-    border-color: blueviolet;
-  }
-  66.666% {
-    border-color: blue;
-  }
-  83.333% {
-    border-color: black;
-  }
-  100% {
-    border-color: gray;
+  to {
+    --angle: 360deg;
   }
 }
 
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
 .border-rainbow {
+  --angle: 0deg;
+  border-image: conic-gradient(
+      from var(--angle),
+      red,
+      yellow,
+      lime,
+      aqua,
+      blue,
+      magenta,
+      red
+    )
+    1;
   animation: rainbow 5s linear infinite;
-  transition-timing-function: linear;
 }
