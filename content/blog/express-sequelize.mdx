@@ -56,7 +56,190 @@ npm install express sequelize mysql2 nodemon cors dotenv
 
 ---
 
-## Chapter 2: Fields of MAIN
+## Chapter 2: Configuration database and Crete User Entiy
+
+- setup configuration `entities/user.js`.
+
+```js title="user.js"
+import { DataTypes, Sequelize } from "sequelize";
+
+// configuration database
+const dbConfig = {
+  database: "your-database-name",
+  username: "your-username",
+  password: "your-password",
+  host: "your-host",
+  dialect: "dialect-db",
+  port: your - port,
+};
+
+// init sequelize
+const sequelize = new Sequelize(
+  dbConfig.database,
+  dbConfig.username,
+  dbConfig.password,
+  {
+    host: dbConfig.host,
+    dialect: dbConfig.dialect,
+    port: dbConfig.port,
+  }
+);
+
+// init entity users
+const Users = sequelize.define("users", {
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+});
+
+export default { sequelize, Users };
+```
+
+---
+
+## Chapter 3: Create Logic to services
+
+- `services/user-service.js`.
+
+```js title="user-service.js"
+import Users from "../entity/users.js";
+
+// create user service
+async function createUsers(request) {
+  const { name, email, password } = request;
+  const user = await Users.Users.create({
+    name: name,
+    email: email,
+    password: password,
+  });
+  return user;
+}
+
+// get user by id service
+async function getUserById(id) {
+  const user = await Users.Users.findByPk(id);
+
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  return user;
+}
+
+// get all users service
+async function getAllUsers() {
+  const users = await Users.Users.findAll();
+  return users;
+}
+
+// update user service
+async function updateUser(id, request) {
+  const { name, email, password } = request;
+
+  const user = await getUserById(id);
+
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  const updatedUser = await user.update({
+    name: name,
+    email: email,
+    password: password,
+  });
+
+  return updatedUser;
+}
+
+// delete user service
+async function deleteUser(id) {
+  const user = await getUserById(id);
+  await user.destroy();
+  return user;
+}
+
+export default {
+  createUsers,
+  getUserById,
+  getAllUsers,
+  updateUser,
+  deleteUser,
+};
+```
+
+---
+
+Chapter 6: Controller for setup data to JSON
+
+```js title="user-controller.js"
+import userService from "../services/user-service.js";
+
+// create user controller
+async function createUser(req, res) {
+  await userService.createUsers(req.body);
+  res.status(201).json({
+    message: "User created successfully",
+  });
+}
+
+// get user by id controller
+async function getUserById(req, res) {
+  const { id } = req.params;
+  const user = await userService.getUserById(id);
+  res.status(200).json({
+    message: "User retrieved successfully",
+    data: user,
+  });
+}
+
+// get all users controller
+async function getAllUsers(req, res) {
+  const users = await userService.getAllUsers();
+  res.status(200).json({
+    message: "User retrieved successfully",
+    data: users,
+  });
+}
+
+// update user controller
+async function updateUser(req, res) {
+  const { id } = req.params;
+  await userService.updateUser(id, req.body);
+  res.status(200).json({
+    message: "User updated successfully",
+  });
+}
+
+// delete user controller
+async function deleteUser(req, res) {
+  const { id } = req.params;
+  await userService.deleteUser(id);
+  res.status(200).json({
+    message: "User deleted successfully",
+  });
+}
+
+export default {
+  createUser,
+  getUserById,
+  getAllUsers,
+  updateUser,
+  deleteUser,
+};
+```
+
+---
+
+## Chapter 5: Fields of MAIN
 
 the main.js file serves to run the project that you have created.
 
@@ -64,7 +247,8 @@ the main.js file serves to run the project that you have created.
 import express from "express";
 import "dotenv/config";
 import cors from "cors";
-import { db } from "./entities/user.js";
+import sequelize from "./entity/user.js";
+import userController from "./controllers/user-controller.js";
 
 const app = express();
 
@@ -91,8 +275,25 @@ db.sequelize
     console.log("Failed to sync db: " + err.message);
   });
 
+// register routes
+app.post("/users", userController.createUser);
+app.get("/users/:id", userController.getUserById);
+app.get("/users", userController.getAllUsers);
+app.put("/users/:id", userController.updateUser);
+app.delete("/users/:id", userController.deleteUser);
+
 const PORT = process.env.SERVER_PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 ```
+
+---
+
+## Chapter 6: How to run project?
+
+```bash
+npm run dev
+```
+
+**if you success to running, Congratulations**
