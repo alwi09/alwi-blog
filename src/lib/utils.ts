@@ -26,6 +26,17 @@ export function sortPosts(posts: Array<Post>) {
   });
 }
 
+export function groupPostsByYear(posts: Post[]) {
+  return posts.reduce((acc: { [year: string]: Post[] }, post: Post) => {
+    const year = new Date(post.date).getFullYear();
+    if (!acc[year]) {
+      acc[year] = [];
+    }
+    acc[year].push(post);
+    return acc;
+  }, {});
+}
+
 // tags
 export function getAllTags(posts: Array<Post>) {
   const tags: Record<string, number> = {};

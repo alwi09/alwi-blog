@@ -3,7 +3,12 @@ import { PostItem } from "@/components/post-item";
 import { QueryPagination } from "@/components/query-pagination";
 import { Tag } from "@/components/tag";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getAllTags, sortPosts, sortTagsByCount } from "@/lib/utils";
+import {
+  getAllTags,
+  groupPostsByYear,
+  sortPosts,
+  sortTagsByCount,
+} from "@/lib/utils";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -19,6 +24,15 @@ interface BlogPageProps {
   };
 }
 
+// interface Post {
+//   slug: string;
+//   title: string;
+//   description?: string;
+//   date: string;
+//   tags?: string[];
+//   published: boolean;
+// }
+
 export default async function BlogPage({ searchParams }: BlogPageProps) {
   const currentPage = Number(searchParams?.page) || 1;
   const sortedPosts = sortPosts(posts.filter((post) => post.published));
@@ -29,6 +43,10 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
     currentPage * POST_PER_PAGE
   );
   console.log(displayPosts);
+
+  const groupedPosts = groupPostsByYear(displayPosts);
+
+  console.log(groupedPosts);
 
   const tags = getAllTags(posts);
   const sortedTags = sortTagsByCount(tags);
@@ -43,25 +61,34 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           </p>
         </div>
       </div>
-      <div className="grid grid-cols-12 gap-3 my-6">
+      <div className="grid grid-cols-12 gap-3 mt-6">
         <div className="col-span-12 col-start-1 sm:col-span-8">
-          <hr className="my-6" />
           {displayPosts.length > 0 ? (
             <ul className="flex flex-col">
-              {displayPosts.map((post) => {
-                const { slug, title, description, date, tags } = post;
-                return (
-                  <li key={slug}>
-                    <PostItem
-                      slug={slug}
-                      title={title}
-                      description={description}
-                      date={date}
-                      tags={tags}
-                    />
-                  </li>
-                );
-              })}
+              {Object.keys(groupedPosts)
+                .sort((a, b) => Number(b) - Number(a))
+                .map((year) => (
+                  <div key={year}>
+                    <h2 className="text-2xl font-bold text-muted-foreground text-center py-4">
+                      {year}
+                    </h2>
+                    {groupedPosts[year].map((post) => {
+                      const { slug, title, description, date, tags } = post;
+                      return (
+                        <li key={slug}>
+                          <hr className="mb-4" />
+                          <PostItem
+                            slug={slug}
+                            title={title}
+                            description={description}
+                            date={date}
+                            tags={tags}
+                          />
+                        </li>
+                      );
+                    })}
+                  </div>
+                ))}
             </ul>
           ) : (
             <p>Nothing to see here yet</p>
