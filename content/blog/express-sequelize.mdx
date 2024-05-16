@@ -1,7 +1,7 @@
 ---
 title: "CRUD of Express"
 description: Building RESTful API using Express and Sequelize ORM
-date: 2024-04-14
+date: 2024-04-14T20:27:55
 tags: ["code", "express", "sequelize"]
 published: true
 ---
@@ -26,7 +26,7 @@ npm init -y
 npm install express sequelize mysql2 nodemon cors dotenv
 ```
 
-3. **Add like of Highlighting line**:
+3. **Add like of Highlighting lines**:
 
 ```json showLineNumbers{6}{8} title="package.json"
 {
@@ -111,7 +111,7 @@ export default { sequelize, Users };
 - `services/user-service.js`.
 
 ```js title="user-service.js"
-import Users from "../entity/users.js";
+import Users from "../entity/user.js";
 
 // create user service
 async function createUsers(request) {
@@ -252,6 +252,7 @@ import userController from "./controllers/user-controller.js";
 
 const app = express();
 
+// portal access from domain
 app.use(cors({ origin: "domain-frontend-access" }));
 
 // parse requests of content-type - application/json
@@ -266,7 +267,7 @@ app.get("/", (req, res) => {
 });
 
 // syncronize for creating table to db
-db.sequelize
+sequelize.sequelize
   .sync({ force: true }) // if { force : true } = Drop and re-sync db
   .then(() => {
     console.log("Synced db.");

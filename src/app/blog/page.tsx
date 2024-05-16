@@ -24,15 +24,6 @@ interface BlogPageProps {
   };
 }
 
-// interface Post {
-//   slug: string;
-//   title: string;
-//   description?: string;
-//   date: string;
-//   tags?: string[];
-//   published: boolean;
-// }
-
 export default async function BlogPage({ searchParams }: BlogPageProps) {
   const currentPage = Number(searchParams?.page) || 1;
   const sortedPosts = sortPosts(posts.filter((post) => post.published));
@@ -45,7 +36,6 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   console.log(displayPosts);
 
   const groupedPosts = groupPostsByYear(displayPosts);
-
   console.log(groupedPosts);
 
   const tags = getAllTags(posts);
@@ -63,6 +53,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
       </div>
       <div className="grid grid-cols-12 gap-3 mt-6">
         <div className="col-span-12 col-start-1 sm:col-span-8">
+          <hr />
           {displayPosts.length > 0 ? (
             <ul className="flex flex-col">
               {Object.keys(groupedPosts)

@@ -2,7 +2,12 @@ import { posts } from "#site/content";
 import { PostItem } from "@/components/post-item";
 import { Tag } from "@/components/tag";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getAllTags, getPostsByTagSlug, sortTagsByCount } from "@/lib/utils";
+import {
+  getAllTags,
+  getPostsByTagSlug,
+  groupPostsByYear,
+  sortTagsByCount,
+} from "@/lib/utils";
 import { slug } from "github-slugger";
 import { Metadata } from "next";
 
@@ -33,6 +38,11 @@ export default function TagPage({ params }: TagPageProps) {
   const title = tag.split("-").join(" ");
 
   const displayPosts = getPostsByTagSlug(posts, tag);
+  console.log(displayPosts);
+
+  const groupedPosts = groupPostsByYear(displayPosts);
+  console.log(groupedPosts);
+
   const tags = getAllTags(posts);
   const sortedTags = sortTagsByCount(tags);
 
@@ -50,20 +60,30 @@ export default function TagPage({ params }: TagPageProps) {
           <hr />
           {displayPosts?.length > 0 ? (
             <ul className="flex flex-col">
-              {displayPosts.map((post) => {
-                const { slug, date, title, description, tags } = post;
-                return (
-                  <li key={slug}>
-                    <PostItem
-                      slug={slug}
-                      date={date}
-                      title={title}
-                      description={description}
-                      tags={tags}
-                    />
-                  </li>
-                );
-              })}
+              {Object.keys(groupedPosts)
+                .sort((a, b) => Number(b) - Number(a))
+                .map((year) => (
+                  <div key={year}>
+                    <h2 className="text-2xl font-bold text-muted-foreground text-center py-4">
+                      {year}
+                    </h2>
+                    {groupedPosts[year].map((post) => {
+                      const { slug, title, description, date, tags } = post;
+                      return (
+                        <li key={slug}>
+                          <hr className="mb-4" />
+                          <PostItem
+                            slug={slug}
+                            title={title}
+                            description={description}
+                            date={date}
+                            tags={tags}
+                          />
+                        </li>
+                      );
+                    })}
+                  </div>
+                ))}
             </ul>
           ) : (
             <p>Nothing to see here yet</p>

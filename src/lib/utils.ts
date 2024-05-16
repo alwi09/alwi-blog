@@ -1,3 +1,4 @@
+import { Avatar } from "@/components/ui/avatar";
 import { Post } from "#site/content";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -14,6 +15,9 @@ export function formatDate(input: string | number): string {
     year: "numeric",
     month: "long",
     day: "numeric",
+    // weekday: "long",
+    // hour: "numeric",
+    // minute: "numeric",
   });
 }
 
